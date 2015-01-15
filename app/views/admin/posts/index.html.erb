@@ -1,0 +1,16 @@
+<%= render 'admin/common/head' %>
+<%= render 'admin/common/menu' %> 
+<div class="row">
+  <div class="col-xs-6"><%= link_to('新增文章', new_admin_post_path) %></div>
+</div>
+
+<div class="row">
+	<% @posts.each do |i| %>
+  <div class="col-xs-6">
+  	標題:</br><%= link_to(i.title, edit_admin_post_path(i)) %></br>
+  	內容:<%= raw i.content %>
+  	<%= link_to('刪除貼文', admin_post_path(i), method: :delete, data: {confirm: "確定要刪除此貼文嗎"}) %>
+  </div>
+  <% end %>
+</div>
+

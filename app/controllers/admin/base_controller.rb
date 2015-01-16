@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  before_action :authenticate_user!, :required_admin!
+  before_action :login_required, :required_admin!
 
 
   protected

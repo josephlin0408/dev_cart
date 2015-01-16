@@ -1,16 +1,29 @@
 <%= render 'admin/common/head' %>
-<%= render 'admin/common/menu' %> 
-<div class="row">
-  <div class="col-xs-6"><%= link_to('新增文章', new_admin_post_path) %></div>
-</div>
 
-<div class="row">
-	<% @posts.each do |i| %>
-  <div class="col-xs-6">
-  	標題:</br><%= link_to(i.title, edit_admin_post_path(i)) %></br>
-  	內容:<%= raw i.content %>
-  	<%= link_to('刪除貼文', admin_post_path(i), method: :delete, data: {confirm: "確定要刪除此貼文嗎"}) %>
-  </div>
-  <% end %>
+<div class="blog-container">
+	<div class="row">
+  	<div class="col-xs-2">
+  		<%= render 'admin/common/menu' %>
+ 	  </div>
+  <div class="col-xs-10">
+  	<p><%= link_to('新增文章', new_admin_post_path) %></p>
+		<div class="portfolio-box">
+			<% @posts.each do |i| %>
+				<div class="blog-post">
+					<div class="postblog-content">
+						<div class="blog-content">
+							<h2>title:<%= link_to i.title, edit_admin_post_path(i) %></h2>
+							<b><p>內容:<%= raw i.content %></p></b>
+							<p>comments:<%=  %></p>
+							<p>views:<%= %></p>
+							<p>create_date:<%= i.created_at %></p>
+								<%= link_to '修改貼文', edit_admin_post_path(i), class: 'read-more' %>
+								<%= link_to '刪除貼文', admin_post_path(i), class: 'read-more', :method => 'delete', data: {confirm: "確定要刪除此貼文嗎"} %>								
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	</div>			
 </div>
-

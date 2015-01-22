@@ -1,24 +1,23 @@
-<header>
-	<div class="menu-box">
-		<ul class="menu">
-			<li>
-				<%= link_to admin_posts_url do %>
+<div class="col-xs-12 col-sm-3 col-md-2 left-side">
+	<a id="logo" href="">
+		<img src="">
+		logo
+	</a>
+	<span id="toggle-menu"><i class="icon glyphicon glyphicon-align-justify"></i>Menu</span>
+	<ul class="active">
+		<li>
+			<%= link_to admin_posts_url do %>
+				<i class="icon glyphicon glyphicon-pushpin"></i>
 				<span class="xn-text">文章管理</span>
-				<% end %>
-			</li>
-
-			<li>
-
-			</li>
-			<li>
-
-			</li>
-			<li>
-
-			</li>
-			<li>
-
-			</li>
-		</ul>				
-	</div>
-</header>
+			<% end %>
+			<ul class="menu-child-category">
+				<li><%= link_to('所有文章', admin_posts_url, class: :"active") %></li>
+				<li><%= link_to('分類', admin_post_categories_path) %></li>
+			</ul>
+		</li>
+		<li><a href=""><i class="icon glyphicon glyphicon-file"></i>貼文張貼</a></li>
+		<li><a href=""><i class="icon glyphicon glyphicon-bookmark"></i>橫幅管理</a></li>
+		<li><a href=""><i class="icon glyphicon glyphicon-briefcase"></i>商品管理</a></li>
+		<li><a href=""><i class="icon glyphicon glyphicon-cog"></i>站台設定</a></li>
+	</ul>
+</div>

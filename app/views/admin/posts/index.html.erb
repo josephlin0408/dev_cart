@@ -1,29 +1,85 @@
 <%= render 'admin/common/head' %>
-
-<div class="blog-container">
+<div class="container-fluid">
 	<div class="row">
-  	<div class="col-xs-2">
-  		<%= render 'admin/common/menu' %>
- 	  </div>
-  <div class="col-xs-10">
-  	<p><%= link_to('新增文章', new_admin_post_path) %></p>
-		<div class="portfolio-box">
-			<% @posts.each do |i| %>
-				<div class="blog-post">
-					<div class="postblog-content">
-						<div class="blog-content">
-							<h2>title:<%= link_to i.title, edit_admin_post_path(i) %></h2>
-							<b><p>內容:<%= raw i.content %></p></b>
-							<p>comments:<%=  %></p>
-							<p>views:<%= %></p>
-							<p>create_date:<%= i.created_at %></p>
-								<%= link_to '修改貼文', edit_admin_post_path(i), class: 'read-more' %>
-								<%= link_to '刪除貼文', admin_post_path(i), class: 'read-more', :method => 'delete', data: {confirm: "確定要刪除此貼文嗎"} %>								
-						</div>
-					</div>
-				</div>
-			<% end %>
+		<%= render 'admin/common/menu' %>
+<div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 article">
+		<!-- 頁面標題 -->
+		<div class="page-title"> 
+			<h2>文章</h2>
 		</div>
+		<%= link_to('新增文章', new_admin_post_path, class: :"add-article btn btn-default") %>		
+		<div class="page-content-wrap">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- 關鍵字搜尋 -->
+					<div class="search col-md-6">
+						<input class="form-control" type="text" placeholder="搜尋">
+						<a href="" class="btn btn-default">
+							<span class="glyphicon glyphicon-search"></span>
+						</a>
+					</div>
+					<!-- 條件篩選 -->
+					<div class="select col-md-6">
+						<select class="form-control">
+                <option>批次管理</option>
+                <option>批次管理</option>
+                <option>批次管理</option>
+          	</select>
+          	<a href="" class="btn btn-default">套用</a>
+						<select class="form-control">
+                <option>全部日期</option>
+                <option>全部日期</option>
+                <option>全部日期</option>
+          	</select>
+          	<a href="" class="btn btn-default">篩選</a>
+					</div>
+					<!-- 表格 -->
+					<table class="table table-bordered table-hover">
+	          <thead>
+	              <tr>
+	                  <th><input type="checkbox">全選</th>
+	                  <th>標題</th>
+	                  <th>作者</th>
+	                  <th>分類</th>
+	                  <th>標籤</th>
+	                  <th>日期</th>
+	              </tr>
+	          </thead>
+	          <% @posts.each do |i| %>
+	          <tbody>
+	            <tr>
+	              <td><input type="checkbox"></td>
+	              <td><%= link_to i.title, edit_admin_post_path(i) %>
+	                  <div class="post-list-action">
+	                	<span><%= link_to('編輯', edit_admin_post_path(i)) %>  |  </span>
+	                	<span><%= link_to('刪除', admin_post_path(i), method: :delete, data: {confirm: "確定要刪除此文章嗎"}) %>  |  </span>
+	                	<span><%= link_to('查看', post_path(i)) %></span>
+	                </div>
+	              </td>
+	              <td><%= i.author %></td>
+	              <td><%= i.category %></td>
+	              <td><%= i.tag_list %></td>
+	              <td><%= i.created_at %></td>
+	            </tr>
+	          </tbody>
+	          <% end %>
+	      </table>
+	      <!-- 頁數 -->
+					<nav>
+				      <ul class="pagination">
+				        <li class="disabled"><a href="#">«</a></li>
+				        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				        <li><a href="#">2</a></li>
+				        <li><a href="#">3</a></li>
+				        <li><a href="#">4</a></li>
+				        <li><a href="#">5</a></li>
+				        <li><a href="#">»</a></li>
+				     </ul>
+				   </nav>
+
+				</div><!-- col-md-12 END -->
+			</div><!-- row-fluid END -->
+		</div><!-- page-content-wrap END -->		
 	</div>
-	</div>			
-</div>
+</div> <!-- row END -->
+</div> <!-- container-fluid END -->

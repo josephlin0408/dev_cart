@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115221857) do
+ActiveRecord::Schema.define(version: 20150121131702) do
+
+  create_table "post_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "category"
+    t.string   "author"
     t.string   "image"
     t.boolean  "status"
     t.datetime "created_at"
@@ -59,7 +67,11 @@ ActiveRecord::Schema.define(version: 20150115221857) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
+    t.string   "name",                   default: "",    null: false
     t.string   "email",                  default: "",    null: false
+    t.string   "address",                default: "",    null: false
+    t.integer  "tel",                    default: 0,     null: false
+    t.date     "birthday"
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

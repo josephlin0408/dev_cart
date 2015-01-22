@@ -8,6 +8,7 @@ gem 'redactor-rails'
 gem 'google-analytics-rails'
 
 # back-end gem
+gem 'disqus'
 gem 'devise'
 gem 'bcrypt'
 gem 'redcarpet'
@@ -16,6 +17,9 @@ gem 'albino'
 gem 'carrierwave'
 gem 'mini_magick'
 
+#errors
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

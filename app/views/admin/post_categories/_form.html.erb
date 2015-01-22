@@ -1,0 +1,11 @@
+<div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 article">
+	<!-- 頁面標題 -->
+	<div class="page-title"> 
+		<h2>新增分類</h2>
+	</div>
+<%= bootstrap_form_for [:admin, @post_category] do |f| %>
+	<%= f.text_field :name %>
+	<%= f.submit '送出' %>
+<% end %>
+<%= link_to('返回上一頁', admin_post_categories_path) %>
+</div>

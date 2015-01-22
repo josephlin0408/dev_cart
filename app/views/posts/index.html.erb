@@ -1,2 +1,25 @@
 <%= render 'admin/common/head' %>
-前台首頁
+
+<div class="blog-container">
+	<div class="row">
+  	<div class="col-xs-2">
+ 	  </div>
+  <div class="col-xs-10">
+		<div class="portfolio-box">
+			<% @post_find_status.each do |i| %>
+				<div class="blog-post">
+					<div class="postblog-content">
+						<div class="blog-content">
+							<h2>title:<%= link_to i.title, post_path(i) %></h2>
+							<b><p>內容:<%= raw i.content %></p></b>
+							<p>comments:<%=  %></p>
+							<p>views:<%= %></p>
+							<p>create_date:<%= i.created_at %></p>					
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	</div>			
+</div>

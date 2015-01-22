@@ -1,8 +1,83 @@
-			<%= bootstrap_form_for [:admin, @post] do |n| %>
-				<%= n.text_field :title, class: "form-control input-lg", placeholder: "title" %>
-				<%= n.text_field :tag_list, class: "form-control input-lg", placeholder: "tags" %>
-				<%= n.text_field :status, class: "form-control input-lg", placeholder: "status" %>
-				<%= n.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
-				<%= n.submit '送出' %>
-				<%= link_to('返回上層', admin_posts_url) %>
-			<% end %>
+<div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 article">
+	<!-- 頁面標題 -->
+	<div class="page-title"> 
+		<h2>新增文章</h2>
+	</div>
+	<%= bootstrap_form_for [:admin, @post] do |n| %>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- 左邊大區塊 -->
+				<div class="col-md-8 add-post-left">
+					<%= n.text_field :title, class: "form-control", placeholder: "文章名稱" %>	
+					<%= n.hidden_field :author, class: "form-control", value: current_user.name %>		
+					<%= n.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
+				</div>
+				<!-- 右邊小區塊 -->
+				<div class="col-md-4 add-post-right">
+					<!-- 發布 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">發佈</h3>
+						</div>
+						<div class="panel-body">
+							<div class="btn-group">
+								<a type="button" class="btn btn-default">存成草稿</a>
+								<%= link_to('取消', admin_posts_url, class: :"btn btn-default") %>
+								<%= n.submit '發佈', class: :"btn btn-primary" %>							
+							</div>							
+							<div class="pub-section">
+								<span class="title">狀態</span>
+								<label class="radio-inline">
+								<%= n.radio_button :status, "1", label: :"公開", :checked => (@post.status? == true) %>
+								</label>
+								<label class="radio-inline">
+								<%= n.radio_button :status, "0", label: :"隱藏", :checked => (@post.status? == false)%>
+								</label>				
+							</div>
+						</div>
+					</div><!-- 發布 結束-->
+					<!-- 分類 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">分類</h3>
+						</div>
+						<div class="panel-body">
+							<div class="checkbox">								
+								<%= n.collection_check_boxes :category, PostCategory.all, :id, :name %>
+							<a type="button" class="btn btn-default pull-right">增加新類別</a>
+						</div>
+					</div><!-- 分類 結束-->
+					<!-- 標籤 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">標籤</h3>
+						</div>
+						<div class="panel-body">
+							<div class="checkbox">
+								<label>
+									<%= n.text_field :tag_list, class: "form-control", placeholder: "標籤" %>
+									請用逗號做區隔(例:文章,日誌,...)
+								</label>
+							</div>
+						</div>
+					</div><!-- 標籤 結束-->
+					<!-- 特色圖片 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">特色圖片</h3>
+						</div>
+						<div class="panel-body">
+							<div class="form-group file">
+								<input type="file" id="exampleInputFile">
+							</div>
+						</div>
+					</div><!-- 特色圖片 結束-->
+				</div><!-- 右邊小區塊 結束 -->
+			</div><!-- col-md-12 END -->
+		</div><!-- row-fluid END -->
+	</div><!-- page-content-wrap END -->
+	<% end %>
+</div>
+
+

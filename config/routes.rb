@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'posts#index'
     resources 'posts'
+    resources 'post_categories'
   end
 end

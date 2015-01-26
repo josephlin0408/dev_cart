@@ -1,5 +1,7 @@
 /*手機優先，解析度小於768px*/
-
+body{
+	font-family:"微軟正黑體",Arial;
+}
 
 .container-fluid{
 	padding: 0px;
@@ -216,7 +218,31 @@
 .category-add input{
 	margin: 5px 0px;
 }
-
+/*************
+ 分類管理
+ *************/
+.post-categories .article .page-title{
+	float: none;
+	padding-left: 0px;
+}
+.post-categories h4{
+	font-weight: bold;
+	margin-top: 20px;
+}
+.post-categories .col-md-3,.post-categories .col-md-7{
+	padding: 0px 30px;
+}
+.post-categories .article .table th:nth-child(2){
+	width: 30%;
+}
+.post-categories .article .table th:nth-child(5){
+	width: 10%;
+}
+.post-categories .page-content-wrap{
+	margin-top: 17px;
+	border-top: 1px solid #ccc;
+	padding-bottom: 30px;
+}
 
 
 /* 小屏幕（平板，大于等于 768px） */
@@ -253,6 +279,22 @@
 	}
 	.page-content-wrap .add-post-right{
 		padding-left: 0px;;
+	}	
+	/*************
+	 分類管理
+	 *************/
+	.post-categories .col-md-3,.post-categories .col-md-7{
+		padding: 0px 15px;
+	}
+	.post-categories .col-md-3{
+		position: absolute;
+	}
+	.post-categories .col-md-7{
+		margin-top: 55px;
+	}
+	.post-categories .page-content-wrap{
+		margin-top: 0px;
+		border-top: 0px solid #ccc;
 	}
 }
 

@@ -22,7 +22,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="btn-group">
-								<a type="button" class="btn btn-default">存成草稿</a>
+								<%= link_to('查看', post_path(@post), class: :"btn btn-default") %>
 								<%= link_to('取消', admin_posts_url, class: :"btn btn-default") %>
 								<%= n.submit '發佈', class: :"btn btn-primary" %>							
 							</div>							
@@ -33,6 +33,15 @@
 								</label>
 								<label class="radio-inline">
 								<%= n.radio_button :status, "0", label: :"隱藏", :checked => (@post.status? == false)%>
+								</label>				
+							</div>
+							<div class="pub-section">
+								<span class="title">存成草稿</span>
+								<label class="radio-inline">
+								<%= n.radio_button :draft, "1", label: :"是", :checked => (@post.draft? == true) %>
+								</label>
+								<label class="radio-inline">
+								<%= n.radio_button :draft, "0", label: :"否", :checked => (@post.draft? == false)%>
 								</label>				
 							</div>
 						</div>

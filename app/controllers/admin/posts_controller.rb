@@ -38,7 +38,7 @@ class Admin::PostsController < Admin::BaseController
 
 	private
 	def post_params
-		params.require(:post).permit(:category_ids, :category, :author, :title, :content, :image, :status, :tag_list, :created_at)
+		params.require(:post).permit(:draft ,:category_ids, :category, :author, :title, :content, :image, :status, :tag_list, :created_at)
 	end
 
 end

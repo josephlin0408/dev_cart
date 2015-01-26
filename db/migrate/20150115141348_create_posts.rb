@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :author
       t.string :image
       t.boolean :status
+      t.boolean :draft
 
       t.timestamps
     end

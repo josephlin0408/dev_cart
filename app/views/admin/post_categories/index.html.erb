@@ -1,16 +1,83 @@
 <%= render 'admin/common/head' %>
-<div class="container-fluid">
+<div class="container-fluid post-categories">
 	<div class="row">
 		<%= render 'admin/common/menu' %>
-<div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 article">
+	<div class="col-xs-12 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-2 article">
 		<!-- 頁面標題 -->
 		<div class="page-title"> 
-			<h2>分類</h2>
+			<h2>分類管理</h2>
 		</div>
-<%= link_to('新增分類', new_admin_post_category_path) %></br>
-<%= link_to('回後台首頁', admin_posts_path) %>
+		<h4>增加新分類</h4>
+		<%= bootstrap_form_for [:admin, @post_category] do |a| %>
+		<div class="form-group">
+			<%= a.text_field :name, class: :"form-control", placeholder: :"輸入分類名稱", label: :"分類名稱" %>
+		</div>
+			<%= a.submit '確認新增', class: :"btn btn-primary" %>
+		<% end %>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-7 col-md-offset-5 article">
+		<div class="page-content-wrap">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>管理類別</h4>
+					<!-- 關鍵字搜尋 -->
+					<div class="search col-md-6">
+						<input class="form-control" type="text" placeholder="搜尋">
+						<a href="" class="btn btn-default">
+							<span class="glyphicon glyphicon-search"></span>
+						</a>
+					</div>
+					<!-- 條件篩選 -->
+					<div class="select col-md-6">
+						<select class="form-control">
+                            <option>批次管理</option>
+                            <option>批次管理</option>
+                            <option>批次管理</option>
+                      	</select>
+                      	<a href="" class="btn btn-default">套用</a>
+					</div>
+					<!-- 表格 -->
+					<table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox">全選</th>
+                                <th>分類名</th>
+                                <th>文章數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<% @post_categories.each do |i| %>
+                            <tr>
+                              <td><input type="checkbox"></td>
+                              <td>
+                              	<%= link_to(i.name, edit_admin_post_category_path(i), class: :"post-list-title") %>
+                              	<div class="post-list-action">
+                                	<span><a href="">編輯</a>　|　</span>
+                                	<span><a href="">刪除</a>　|　</span>
+                                	<span><a href="">查看</a></span>
+                                </div>
+                              </td>
+                              <td><%= @post_category_count %></td>
+                            </tr>
+                        	<% end %>                            
+                        </tbody>
+                    </table>
+                    <!-- 頁數 -->
+					<nav>
+				      <ul class="pagination">
+				        <li class="disabled"><a href="#">«</a></li>
+				        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				        <li><a href="#">2</a></li>
+				        <li><a href="#">3</a></li>
+				        <li><a href="#">4</a></li>
+				        <li><a href="#">5</a></li>
+				        <li><a href="#">»</a></li>
+				     </ul>
+				   </nav>
+
+				</div><!-- col-md-12 END -->
 			</div><!-- row-fluid END -->
-		</div><!-- page-content-wrap END -->		
+		</div><!-- page-content-wrap END -->
 	</div>
 </div> <!-- row END -->
 </div> <!-- container-fluid END -->

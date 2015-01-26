@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 	def index
-		@posts = Post.post_filter(params[:tag])
-		@post_find_status = Post.where(:status => "1")
+		@post_find_status = Post.where(:status => "1", :draft => "0")
 	end
 
 	def show

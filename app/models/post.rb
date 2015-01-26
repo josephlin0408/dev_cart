@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 	validates :title, presence: 'true'
 
 	#資料表關聯
-	has_and_belongs_to_many :post_categories
+	has_many :post_categories
 	
 
 end
